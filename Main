@@ -44,3 +44,4 @@ while True:
         re.click()
         de.clear()
 #I used pycharm Version: 2020.3.1
+python 3.8
