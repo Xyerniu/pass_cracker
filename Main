@@ -1,0 +1,46 @@
+from selenium import webdriver
+import random
+import string
+import time
+
+PATH = "C:\Program Files (x86)\chromedriver.exe"
+driver = webdriver.Chrome(PATH)
+driver.get("website url")
+email = driver.find_element_by_xpath(
+    "Xpath of the email or username bar")
+email.send_keys("username")
+de = driver.find_element_by_xpath(
+    "Xpath of the Password bar")
+re = driver.find_element_by_xpath(
+    "Xpath of the Submit button")
+
+
+def random_string(length=8, uppercase=False, lowercase=True, numbers=True):
+    character_set = ''
+
+    if uppercase:
+        character_set += string.ascii_uppercase
+    if lowercase:
+        character_set += string.ascii_lowercase
+    if numbers:
+        character_set += string.digits
+
+    return ''.join(random.choice(character_set) for i in range(length))
+
+
+user_input = {
+}  # the  dictionary to see if the string has been  already input
+while True:
+    i_random = random_string(1)  # Length of the string
+    if i_random in user_input:
+        print("is")
+    elif i_random:
+        print(user_input)
+        print("works")
+        user_input[i_random] = user_input
+        de.send_keys(i_random)
+        print(i_random)
+        time.sleep(2)
+        re.click()
+        de.clear()
+#I used pycharm Version: 2020.3.1
